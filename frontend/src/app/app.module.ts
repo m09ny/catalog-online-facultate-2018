@@ -12,6 +12,7 @@ import { PagesModule } from './pages/pages.module';
 import { AppRoutingModule } from './app-routing.module';
 import {EmployeeData } from './employee-data';
 
+
 @NgModule({
   declarations: [
     AppComponent
@@ -26,7 +27,7 @@ import {EmployeeData } from './employee-data';
     ClarityModule,
     InMemoryWebApiModule.forRoot(EmployeeData)
   ],
-  providers: [],
+  providers: [EmployeeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
