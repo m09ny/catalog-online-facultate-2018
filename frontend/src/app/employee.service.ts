@@ -4,11 +4,12 @@ import { Http, Headers } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
 import { Employee } from './models/employee';
-import { Header } from '@clr/angular';
+
 
 @Injectable()
 export class EmployeeService {
     private employeesURL = 'app/employees';
+
     private headers = new Headers({'Content-Type': 'application/json'});
 
     constructor(private http: Http) {}

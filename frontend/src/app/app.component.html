@@ -26,8 +26,8 @@
       <td>{{employee.role}}</td>
       <td>{{employee.salary}}</td>
       <td>
-        <button class="btn btn-info" (click)="showEmployeeForm(employee)"><i class="fa fa-edit"></i></button>
-        <button class="btn btn-danger" (click)="removeEmployee(employee)"><i class="fa fa-minus"></i></button>
+        <button type="button" class="btn btn-info" (click)="showEmployeeForm(employee)"><i class="fa fa-edit"></i></button>
+        <button type="button" class="btn btn-danger" (click)="removeEmployee(employee)"><i class="fa fa-minus"></i></button>
       </td>
     </tr>
   </tbody>
@@ -49,6 +49,6 @@
   <p>Role: <input type="text" name="role" [(ngModel)]="formEmployee.role" /></p>
   <p>Salary: <input type="number" name="salary" [(ngModel)]="formEmployee.salary" /></p>
   <p>
-    <button type="button" class="btn btn-primary" (click)="saveeEmployee(formEmployee)">Submit</button>
+    <button type="button" class="btn btn-primary" (click)="saveEmployee(formEmployee)">Submit</button>
   </p>
 </form>
