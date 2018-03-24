@@ -4,10 +4,12 @@ import { Http, Headers } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
 import { Employee } from './models/employee';
+import { Header } from '@clr/angular';
 
 @Injectable()
 export class EmployeeService {
     private employeesURL = 'app/employees';
+    private headers = new Headers({'Content-Type': 'application/json'});
 
     constructor(private http: Http) {}
 
@@ -19,17 +21,33 @@ export class EmployeeService {
     }
 
     deleteEmployee(employee: Employee): Promise<any>{
-        return new Promise(resolve => {         
-        });
+        let deleteURL = `${this.employeesURL}/${employee.id}`;
+       
+        return this.http.delete(deleteURL)
+                        .toPromise()
+                        .then(this.success)
+                        .catch(this.handleError);
+
+        /*return new Promise(resolve => {     
+            resolve();    
+        });*/
     }
 
-    insertEmployee(employee: Employee): Promise<any>{
-        return new Promise(resolve => {         
-        });
-    }
+    insertEmployee(employee: Employee): Promise<Employee>{
+        return this.http.post(this.employeesURL, JSON.stringify(employee), { headers: this.headers })
+                        .toPromise()
+                        .then(response => response.json().data as Employee)
+                        .catch(this.handleError);
+    }                   
+
 
     updateEmployee(employee: Employee): Promise<any>{
-        return Promise.resolve();
+        let updateURL = `${this.employeesURL}/${employee.id}`;
+
+        return this.http.put(updateURL, JSON.stringify(employee), { headers: this.headers })
+                        .toPromise()
+                        .then(this.success)
+                        .catch(this.handleError);
     }
 
     private handleError(error: any){
@@ -37,5 +55,8 @@ export class EmployeeService {
         return Promise.reject(error.message || error);
     }
     
+    private success(): Promise<any>{
+        return Promise.resolve();
+    }
 
 }

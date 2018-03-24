@@ -34,6 +34,13 @@ export class AppComponent implements OnInit{
 
   removeEmployee(employee: Employee){
     this.employeeService.deleteEmployee(employee)
+      .then(() => {
+        var index = this.employees.indexOf(employee, 0);
+
+        if (index > -1){
+          this.employees.splice(index, 1);
+        }
+      })
       .catch(error => console.log(error));
   }
 
@@ -46,6 +53,10 @@ export class AppComponent implements OnInit{
       }
       else {
         this.employeeService.updateEmployee(employee)
+         /* .then(() => {
+            this.employees = [];
+            this.ngOnInit()
+          })*/
           .catch(error => console.log(error));
       }
 

@@ -1,20 +1,53 @@
-<div class="ui top fixed menu inverted large">
-    <a class="item" (click)="sidebar.toggle()">
-      <i class="sidebar icon"></i> Menu
-    </a>
-  </div>
-  <sui-sidebar-container class="ui bottom attached segment">
-    <sui-sidebar class="inverted vertical" #sidebar>
-      <a class="item"href="/home">Home</a>
-      <a class="item" href="/employees">Employees</a>
-      <a class="item" href="/departments">Departments</a>
-      <a class="item" href="/bills">Bills</a>
-      <a class="item" href="/accomodations">Accomodations</a>
-      <a class="item" href="/clients">Clients</a>
-      <a class="item" href="/rooms">Rooms</a>
-    </sui-sidebar>
-    <sui-sidebar-sibling [isDimmedWhenVisible]="true">
-      <router-outlet></router-outlet>
-    </sui-sidebar-sibling>
-  </sui-sidebar-container>
-  
+<h1>Employees</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <td>Id</td>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>CNP</th>
+      <th>Address</th>
+      <th>Phone</th>
+      <th>Employment Date</th>
+      <th>Role</th>
+      <th>Salary</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let employee of employees">
+      <td>{{employee.id}}</td>
+      <td>{{employee.firstName}}</td>
+      <td>{{employee.lastName}}</td>
+      <td>{{employee.cnp}}</td>
+      <td>{{employee.address}}</td>
+      <td>{{employee.phone}}</td>
+      <td>{{employee.employment_date}}</td>
+      <td>{{employee.role}}</td>
+      <td>{{employee.salary}}</td>
+      <td>
+        <button class="btn btn-info" (click)="showEmployeeForm(employee)"><i class="fa fa-edit"></i></button>
+        <button class="btn btn-danger" (click)="removeEmployee(employee)"><i class="fa fa-minus"></i></button>
+      </td>
+    </tr>
+  </tbody>
+
+  <button *ngIf="!newEmployee" class="btn btn-success" (click)="showEmployeeForm(null)"><i class="fa fa-plus"></i></button>
+<br />
+<br />
+
+<form *ngIf="showForm">
+  <h2>Employee Details</h2>
+  <p>Id: {{formEmployee.id}}</p>
+  <p>First Name: <input type="text" name="firstName" [(ngModel)]="formEmployee.firstName" /></p>
+  <p>Last Name: <input type="text" name="lastName" [(ngModel)]="formEmployee.lastName" /></p>
+  <p>CNP: <input type="text" name="cnp" [(ngModel)]="formEmployee.cnp" /></p>
+  <p>Address: <input type="text" name="address" [(ngModel)]="formEmployee.address" /></p>
+  <p>Phone: <input type="text" name="phone" [(ngModel)]="formEmployee.phone" /></p>
+  <p>Employment Date: <input type="text" name="employment_date" [(ngModel)]="formEmployee.employment_date" /></p>
+  <p>Role: <input type="text" name="role" [(ngModel)]="formEmployee.role" /></p>
+  <p>Salary: <input type="number" name="salary" [(ngModel)]="formEmployee.salary" /></p>
+  <p>
+    <button type="button" class="btn btn-primary" (click)="saveeEmployee(formEmployee)>Submit</button>
+  </p>
+</form>
