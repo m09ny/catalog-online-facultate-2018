@@ -1,6 +1,11 @@
 ## Docs
 ## Useful urls
+<<<<<<< HEAD
 
+=======
+#testMonica
+#testLinda
+>>>>>>> 26e16a579373149933a9af3bfa8c0024885b2736
 TypeScript Deep Dive:   https://basarat.gitbooks.io/typescript/content/
 
 Mongodb connection: https://scotch.io/tutorials/using-mongoosejs-in-node-js-and-mongodb-applications
