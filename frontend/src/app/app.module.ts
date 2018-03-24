@@ -10,7 +10,7 @@ import { EmployeeService } from './employee.service';
 import { AppComponent } from './app.component';
 import { PagesModule } from './pages/pages.module';
 import { AppRoutingModule } from './app-routing.module';
-import {EmployeeData } from './employee-data';
+import { EmployeeData } from './employee-data';
 
 
 @NgModule({

@@ -5,24 +5,23 @@ import 'rxjs/add/operator/toPromise';
 
 import { Employee } from './models/employee';
 
-
 @Injectable()
 export class EmployeeService {
-    private employeesURL = 'app/employees';
+    private employeesUrl = 'api/employees';
 
     private headers = new Headers({'Content-Type': 'application/json'});
 
     constructor(private http: Http) {}
 
     getEmployees(): Promise<Employee[]> {
-        return this.http.get(this.employeesURL)
+        return this.http.get(this.employeesUrl)
                         .toPromise()
                         .then(response=> response.json().data as Employee[])
                         .catch(this.handleError);
     }
 
     deleteEmployee(employee: Employee): Promise<any>{
-        let deleteURL = `${this.employeesURL}/${employee.id}`;
+        let deleteURL = `${this.employeesUrl}/${employee.id}`;
        
         return this.http.delete(deleteURL)
                         .toPromise()
@@ -35,7 +34,7 @@ export class EmployeeService {
     }
 
     insertEmployee(employee: Employee): Promise<Employee>{
-        return this.http.post(this.employeesURL, JSON.stringify(employee), { headers: this.headers })
+        return this.http.post(this.employeesUrl, JSON.stringify(employee), { headers: this.headers })
                         .toPromise()
                         .then(response => response.json().data as Employee)
                         .catch(this.handleError);
@@ -43,7 +42,7 @@ export class EmployeeService {
 
 
     updateEmployee(employee: Employee): Promise<any>{
-        let updateURL = `${this.employeesURL}/${employee.id}`;
+        let updateURL = `${this.employeesUrl}/${employee.id}`;
 
         return this.http.put(updateURL, JSON.stringify(employee), { headers: this.headers })
                         .toPromise()
