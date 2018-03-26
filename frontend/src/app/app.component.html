@@ -33,7 +33,7 @@
   </tbody>
 </table>
 
-<button *ngIf="!newEmployee" class="btn btn-success" (click)="showEmployeeForm(null)"><i class="fa fa-plus"></i></button>
+<button *ngIf="!newEmployee" class="btn btn-success" (click)="showEmployeeForm()"><i class="fa fa-plus"></i></button>
 <br />
 <br />
 
@@ -49,6 +49,6 @@
   <p>Role: <input type="text" name="role" [(ngModel)]="formEmployee.role" /></p>
   <p>Salary: <input type="number" name="salary" [(ngModel)]="formEmployee.salary" /></p>
   <p>
-    <button type="button" class="btn btn-primary" (click)="saveEmployee(formEmployee)">Submit</button>
+    <button type="button" class="btn btn-primary" (click)="saveEmployee()">Submit</button>
   </p>
 </form>

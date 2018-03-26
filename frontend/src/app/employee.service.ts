@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers } from '@angular/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import 'rxjs/add/operator/toPromise';
 
@@ -7,18 +7,25 @@ import { Employee } from './models/employee';
 
 @Injectable()
 export class EmployeeService {
-    private employeesUrl = 'api/employees';
+    private headers = new HttpHeaders({'Content-Type': 'application/json'});
+    private employeesUrl = 'api/employees'; // URL to web api
 
-    private headers = new Headers({'Content-Type': 'application/json'});
-
-    constructor(private http: Http) {}
+    constructor(private http: HttpClient) {}
 
     getEmployees(): Promise<Employee[]> {
         return this.http.get(this.employeesUrl)
                         .toPromise()
-                        .then(response=> response.json().data as Employee[])
+                        .then(response => response as Employee[])
                         .catch(this.handleError);
     }
+
+    getEmployee(id: number): Promise<Employee> {
+        const url = `${this.employeesUrl}/${id}`;
+        return this.http.get(url)
+                        .toPromise()
+                        .then(response => response as Employee)
+                        .catch(this.handleError);
+      }
 
     deleteEmployee(employee: Employee): Promise<any>{
         let deleteURL = `${this.employeesUrl}/${employee.id}`;
@@ -27,16 +34,12 @@ export class EmployeeService {
                         .toPromise()
                         .then(this.success)
                         .catch(this.handleError);
-
-        /*return new Promise(resolve => {     
-            resolve();    
-        });*/
     }
 
     insertEmployee(employee: Employee): Promise<Employee>{
-        return this.http.post(this.employeesUrl, JSON.stringify(employee), { headers: this.headers })
+        return this.http.post(this.employeesUrl, employee, { headers: this.headers })
                         .toPromise()
-                        .then(response => response.json().data as Employee)
+                        .then(response => response as Employee)
                         .catch(this.handleError);
     }                   
 
@@ -44,7 +47,7 @@ export class EmployeeService {
     updateEmployee(employee: Employee): Promise<any>{
         let updateURL = `${this.employeesUrl}/${employee.id}`;
 
-        return this.http.put(updateURL, JSON.stringify(employee), { headers: this.headers })
+        return this.http.put(updateURL, employee, { headers: this.headers })
                         .toPromise()
                         .then(this.success)
                         .catch(this.handleError);

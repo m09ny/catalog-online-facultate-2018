@@ -44,15 +44,16 @@ export class AppComponent implements OnInit{
       .catch(error => console.log(error));
   }
 
-  saveEmployee(employee: Employee){
-    if(employee){
+  saveEmployee(){
+    debugger;
+    if(this.formEmployee){
       if(this.isNewForm){
-        this.employeeService.insertEmployee(employee)
+        this.employeeService.insertEmployee(this.formEmployee)
           .then((insertedEmploye) => this.employees.push(insertedEmploye))
           .catch(error => console.log(error));
       }
       else {
-        this.employeeService.updateEmployee(employee)
+        this.employeeService.updateEmployee(this.formEmployee)
          /* .then(() => {
             this.employees = [];
             this.ngOnInit()
@@ -62,7 +63,7 @@ export class AppComponent implements OnInit{
 
       this.showForm = false;
       this.isNewForm = false;
-      employee = null;
+      this.formEmployee = null;
     }
   }
 
