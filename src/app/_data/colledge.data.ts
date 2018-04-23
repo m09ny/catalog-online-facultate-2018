@@ -17,8 +17,9 @@ export class ColledgeData implements InMemoryDbService {
         ];
 
         this.users = [
-            { id: 1, UserName: 'adrian', Password: '1', Role: 1 },
-            { id: 2, UserName: 'monica', Password: '1', Role: 2 },
+            { id: 1, UserName: 'monica', Password: '1', Role: 1 },
+            { id: 2, UserName: 'linda', Password: '1', Role: 2 },
+            { id: 2, UserName: 'adrian', Password: '1', Role: 2 },
         ];
 
         this.teachers = [
