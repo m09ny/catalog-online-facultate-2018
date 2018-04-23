@@ -8,12 +8,14 @@ import { LoginComponent }         from './login/login.component';
 import { HomeComponent }          from './pages/home/home.component';
 import { ContactComponent }       from './pages/contact/contact.component';
 import { CoursesComponent }       from './pages/courses/courses.component';
+import { TeachersComponent }       from './pages/teachers/teachers.component';
 
 export const appRoutes: Routes = [
   { path: '', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'courses', component: CoursesComponent },
+  { path: 'teachers', component: TeachersComponent },
 
   // otherwise redirect to home
   { path: '**', redirectTo: '' }

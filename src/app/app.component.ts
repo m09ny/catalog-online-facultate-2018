@@ -11,8 +11,9 @@ import { AuthenticateService } from './_services/login.service';
 export class AppComponent {
   menu: Menu[] = [
     { Name: 'Home', Path: '/', Active: true },
-    { Name: 'Contact', Path: '/contact', Active: false },
-    { Name: 'Courses', Path: '/courses', Active: false }
+    { Name: 'Courses', Path: '/courses', Active: false },
+    { Name: 'Teachers', Path: '/teachers', Active: false },
+    { Name: 'Contact', Path: '/contact', Active: false }
   ];
 
   constructor(private authenticate: AuthenticateService,
