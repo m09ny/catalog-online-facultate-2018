@@ -19,6 +19,7 @@ import { ColledgeData } from './_data/colledge.data';
 import { AuthenticateService } from './_services/login.service';
 import { CourseService } from './_services/courses.service';
 import { TeacherService } from './_services/teachers.service';
+import { StudentService } from './_services/students.service';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
@@ -26,6 +27,7 @@ import { ContactComponent } from './pages/contact/contact.component';
 import { LoginComponent } from './login/login.component';
 import { CoursesComponent } from './pages/courses/courses.component';
 import { TeachersComponent } from './pages/teachers/teachers.component';
+import { StudentsComponent } from './pages/students/students.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,8 @@ import { TeachersComponent } from './pages/teachers/teachers.component';
     ContactComponent,
     LoginComponent,
     CoursesComponent,
-    TeachersComponent
+    TeachersComponent,
+    StudentsComponent
   ],
   imports: [
     CommonModule,
@@ -46,8 +49,8 @@ import { TeachersComponent } from './pages/teachers/teachers.component';
     RouterModule.forRoot(appRoutes),
     DataTableModule
   ],
-  providers: [AuthGuard, AuthenticateService, CourseService, TeacherService],
+  providers: [AuthGuard, AuthenticateService, CourseService, TeacherService, StudentService],
   bootstrap: [AppComponent],
-  exports: [HomeComponent, ContactComponent, LoginComponent, CoursesComponent, TeachersComponent]
+  exports: [HomeComponent, ContactComponent, LoginComponent, CoursesComponent, TeachersComponent, StudentsComponent]
 })
 export class AppModule { }

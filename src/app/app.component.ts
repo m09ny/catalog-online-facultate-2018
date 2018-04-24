@@ -13,6 +13,7 @@ export class AppComponent {
     { Name: 'Home', Path: '/', Active: true },
     { Name: 'Courses', Path: '/courses', Active: false },
     { Name: 'Teachers', Path: '/teachers', Active: false },
+    { Name: 'Students', Path: '/students', Active: false},
     { Name: 'Contact', Path: '/contact', Active: false }
   ];
 

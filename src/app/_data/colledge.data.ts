@@ -4,11 +4,13 @@ import { Observable } from 'rxjs/Observable';
 import { Course } from '../_models/course.model';
 import { User, UserRole } from '../_models/user.model';
 import { Teacher } from '../_models/teacher.model';
+import { Student } from '../_models/student.model';
 
 export class ColledgeData implements InMemoryDbService {
     courses: Course[] = [];
     users: User[] = [];
     teachers: Teacher[] = [];
+    students: Student[] = [];
 
     createDb() {
         this.courses = [
@@ -27,6 +29,11 @@ export class ColledgeData implements InMemoryDbService {
             { id: 2, Name: 'Ionescu'},
         ];
 
-        return { users: this.users, courses: this.courses, teachers: this.teachers };
+        this.students = [
+            { id: 1, Name: 'Linda'},
+            { id: 2, Name: 'Monica'},
+        ];
+
+        return { users: this.users, courses: this.courses, teachers: this.teachers, students: this.students };
     }
 }
