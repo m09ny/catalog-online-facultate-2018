@@ -18,6 +18,7 @@ export class AuthenticateService {
         .then(response => {
           if (response instanceof Array && response.length > 0) {
             let user:Login = response[0];
+            console.log(user);
             localStorage.setItem('currentUser', JSON.stringify(user));
             resolve(user);
           } else {

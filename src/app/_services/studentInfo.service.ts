@@ -3,33 +3,32 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import 'rxjs/add/operator/toPromise';
 
-import { Course } from '../_models/course.model';
+import { StudentInfo } from '../_models/studentInfo.model';
 
 @Injectable()
-export class CourseService {
+export class StudentInfoService {
     private headers = new HttpHeaders({'Content-Type': 'application/json'});
-    private CoursesUrl = 'api/courses'; // URL to web api
+    private StudentsInfoUrl = 'api/studentInfo'; // URL to web api
 
     constructor(private http: HttpClient) {}
 
-    getCourses(): Promise<Course[]> {
-        var user = JSON.parse(localStorage.getItem("currentUser"));
-        return this.http.get(this.CoursesUrl + "?Teacher=" + user.id) 
+    getStudentInfos(): Promise<StudentInfo[]> {
+        return this.http.get(this.StudentsInfoUrl)
                         .toPromise()
-                        .then(response => response as Course[])
+                        .then(response => response as StudentInfo[])
                         .catch(this.handleError);
     }
 
-    getCourse(id: number): Promise<Course> {
-        const url = `${this.CoursesUrl}/${id}`;
+    getStudentInfo(id: number): Promise<StudentInfo> {
+        const url = `${this.StudentsInfoUrl}/${id}`;
         return this.http.get(url)
                         .toPromise()
-                        .then(response => response as Course)
+                        .then(response => response as StudentInfo)
                         .catch(this.handleError);
       }
 
-    deleteCourse(Course: Course): Promise<any>{
-        let deleteURL = `${this.CoursesUrl}/${Course.id}`;
+    deleteStudentInfo(StudentInfo: StudentInfo): Promise<any>{
+        let deleteURL = `${this.StudentsInfoUrl}/${StudentInfo.id}`;
        
         return this.http.delete(deleteURL)
                         .toPromise()
@@ -37,18 +36,18 @@ export class CourseService {
                         .catch(this.handleError);
     }
 
-    insertCourse(Course: Course): Promise<Course>{
-        return this.http.post(this.CoursesUrl, Course, { headers: this.headers })
+    insertStudentInfo(StudentInfo: StudentInfo): Promise<StudentInfo>{
+        return this.http.post(this.StudentsInfoUrl, StudentInfo, { headers: this.headers })
                         .toPromise()
-                        .then(response => response as Course)
+                        .then(response => response as StudentInfo)
                         .catch(this.handleError);
     }                   
 
 
-    updateCourse(Course: Course): Promise<any>{
-        let updateURL = `${this.CoursesUrl}/${Course.id}`;
+    updateStudentInfo(StudentInfo: StudentInfo): Promise<any>{
+        let updateURL = `${this.StudentsInfoUrl}/${StudentInfo.id}`;
 
-        return this.http.put(updateURL, Course, { headers: this.headers })
+        return this.http.put(updateURL, StudentInfo, { headers: this.headers })
                         .toPromise()
                         .then(this.success)
                         .catch(this.handleError);

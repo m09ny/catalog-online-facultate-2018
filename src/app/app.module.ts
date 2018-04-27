@@ -20,6 +20,8 @@ import { AuthenticateService } from './_services/login.service';
 import { CourseService } from './_services/courses.service';
 import { TeacherService } from './_services/teachers.service';
 import { StudentService } from './_services/students.service';
+import { StudentCoursesService } from './_services/studentCourses.service';
+import { StudentInfoService } from './_services/studentInfo.service';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
@@ -49,7 +51,7 @@ import { StudentsComponent } from './pages/students/students.component';
     RouterModule.forRoot(appRoutes),
     DataTableModule
   ],
-  providers: [AuthGuard, AuthenticateService, CourseService, TeacherService, StudentService],
+  providers: [AuthGuard, AuthenticateService, CourseService, TeacherService, StudentService, StudentCoursesService, StudentInfoService],
   bootstrap: [AppComponent],
   exports: [HomeComponent, ContactComponent, LoginComponent, CoursesComponent, TeachersComponent, StudentsComponent]
 })

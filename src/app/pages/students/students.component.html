@@ -1,3 +1,5 @@
-<p-dataTable [value]="student">
-  <p-column field="Name" header="Student Name"></p-column>
+<p-dataTable [value]="student" [editable]="true">
+  <p-column field="StudentName" header="Student Name"></p-column>
+  <p-column field="CourseName" header="Course Name"></p-column>
+  <p-column field="Grade" header="Grade" [editable]="true"></p-column>
 </p-dataTable>
