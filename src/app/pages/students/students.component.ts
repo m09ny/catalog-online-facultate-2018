@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import 'rxjs/add/operator/toPromise';
+import { SelectItem } from 'primeng/api';
+
 import { Student } from '../../_models/student.model';
 import { StudentService } from '../../_services/students.service';
 import { StudentCoursesService } from '../../_services/studentCourses.service';
@@ -19,7 +21,19 @@ import { StudentInfo } from '../../_models/studentInfo.model';
 })
 export class StudentsComponent implements OnInit {
 
-  student : StudentInfo[] = [];
+  student: StudentInfo[] = [];
+  grades: SelectItem[] = [
+    { label: "1", value: 1 },
+    { label: "2", value: 2 },
+    { label: "3", value: 3 },
+    { label: "4", value: 4 },
+    { label: "5", value: 5 },
+    { label: "6", value: 6 },
+    { label: "7", value: 7 },
+    { label: "8", value: 8 },
+    { label: "9", value: 9 },
+    { label: "10", value: 10 }
+  ];
 
   constructor (
       private courseService: CourseService,
@@ -31,7 +45,7 @@ export class StudentsComponent implements OnInit {
   ngOnInit() {
     var user:User = JSON.parse(localStorage.getItem("currentUser"));
 
-    Promise.all([this.courseService.getCourses(), 
+    Promise.all([this.courseService.getCourses(user), 
         this.studentService.getStudents(), 
         this.studentCoursesService.getStudentCourses(),
         this.studentInfoService.getStudentInfos()])
@@ -48,9 +62,10 @@ export class StudentsComponent implements OnInit {
             }
           }
           
-          var students = response[1].filter((value) => studentCourses.indexOf(value.id) >= 0);
+          var students = response[1].filter((value) => studentCourses.indexOf(value.id) >= 0), 
+            student = [],
+            current = 0;
 
-          var student = [];
           for (var ndx1 in courses) {
             for (var ndx2 in students) {
               var info = new StudentInfo();
@@ -62,7 +77,7 @@ export class StudentsComponent implements OnInit {
               var dbInfo = response[3].find((value) => value.CourseId === courses[ndx1].id 
                 && value.StudentId === students[ndx2].id);
               info.Grade = dbInfo ? dbInfo.Grade : null;
-
+              info.id = current++;
               student.push(info);
             }
           }
@@ -73,5 +88,15 @@ export class StudentsComponent implements OnInit {
         }
       })
       .catch((reason: any) => alert("Error: " + JSON.stringify(reason)));
+  }
+
+  saveStudents() {
+    let all = [];
+    for (let info of this.student) {
+      all.push(this.studentInfoService.updateStudentInfo(info));
     }
+    Promise.all(all)
+      .then(response => alert("OK!"))
+      .catch((reason: any) => alert("Error: " + JSON.stringify(reason)));
+  }
 }

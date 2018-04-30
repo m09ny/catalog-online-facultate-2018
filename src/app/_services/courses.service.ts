@@ -12,9 +12,12 @@ export class CourseService {
 
     constructor(private http: HttpClient) {}
 
-    getCourses(): Promise<Course[]> {
-        var user = JSON.parse(localStorage.getItem("currentUser"));
-        return this.http.get(this.CoursesUrl + "?Teacher=" + user.id) 
+    getCourses(user?): Promise<Course[]> {
+        let url = user && user.id
+            ? "?Teacher=" + user.id
+            : "";
+
+        return this.http.get(this.CoursesUrl + url) 
                         .toPromise()
                         .then(response => response as Course[])
                         .catch(this.handleError);

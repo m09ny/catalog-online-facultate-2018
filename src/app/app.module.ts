@@ -6,8 +6,10 @@ import { CommonModule } from '@angular/common';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import {DataTableModule} from 'primeng/datatable';
+import { DataTableModule } from 'primeng/datatable';
+import { DropdownModule } from 'primeng/dropdown';
 
 import { appRoutes } from './app.routing';
 import { environment } from '../environments/environment';
@@ -30,6 +32,7 @@ import { LoginComponent } from './login/login.component';
 import { CoursesComponent } from './pages/courses/courses.component';
 import { TeachersComponent } from './pages/teachers/teachers.component';
 import { StudentsComponent } from './pages/students/students.component';
+import { MainMenuComponent } from './_components/main-menu/main-menu.component';
 
 @NgModule({
   declarations: [
@@ -39,9 +42,11 @@ import { StudentsComponent } from './pages/students/students.component';
     LoginComponent,
     CoursesComponent,
     TeachersComponent,
-    StudentsComponent
+    StudentsComponent,
+    MainMenuComponent
   ],
   imports: [
+    BrowserAnimationsModule,
     CommonModule,
     BrowserModule,
     FormsModule,
@@ -49,7 +54,8 @@ import { StudentsComponent } from './pages/students/students.component';
     HttpClientModule,
     HttpClientInMemoryWebApiModule.forRoot(ColledgeData),
     RouterModule.forRoot(appRoutes),
-    DataTableModule
+    DataTableModule,
+    DropdownModule
   ],
   providers: [AuthGuard, AuthenticateService, CourseService, TeacherService, StudentService, StudentCoursesService, StudentInfoService],
   bootstrap: [AppComponent],

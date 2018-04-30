@@ -1,5 +1,11 @@
 <p-dataTable [value]="student" [editable]="true">
-  <p-column field="StudentName" header="Student Name"></p-column>
-  <p-column field="CourseName" header="Course Name"></p-column>
-  <p-column field="Grade" header="Grade" [editable]="true"></p-column>
+  <p-column field="CourseName" header="Course" [filter]="true"></p-column>
+  <p-column field="StudentName" header="Student Name" [filter]="true"></p-column>
+  <p-column field="Grade" header="Grade" [editable]="true">
+    <ng-template let-col let-grade="rowData" pTemplate="editor">
+      <p-dropdown [(ngModel)]="grade[col.field]" [options]="grades" [autoWidth]="false" [style]="{'width':'100%'}" required="true" appendTo="body"></p-dropdown>
+    </ng-template>
+  </p-column>
 </p-dataTable>
+
+<button class="btn btn-primary mt-3" type="button" (click)="saveStudents()" label="Primary">Save</button>
