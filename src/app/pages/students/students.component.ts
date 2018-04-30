@@ -95,7 +95,7 @@ export class StudentsComponent implements OnInit {
       all.push(this.studentInfoService.updateStudentInfo(info));
     }
     Promise.all(all)
-      .then(response => alert("OK!"))
+      .then(response => alert("Data was saved!"))
       .catch((reason: any) => alert("Error: " + JSON.stringify(reason)));
   }
 }

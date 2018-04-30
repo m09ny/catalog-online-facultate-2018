@@ -79,7 +79,7 @@ export class CoursesComponent implements OnInit {
       }
     }
     Promise.all(all)
-      .then(response => alert("OK!"))
+      .then(response => alert("Data was saved!"))
       .catch((reason: any) => alert("Error: " + JSON.stringify(reason)));
   }
 }
