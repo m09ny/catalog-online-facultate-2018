@@ -42,35 +42,35 @@ export class ColledgeData implements InMemoryDbService {
         ];
 
         this.students = [
-            { id: 1, Name: 'alex'},
-            { id: 2, Name: 'maria'},
-            { id: 3, Name: 'andrei'},
+            { id: 4, Name: 'alex'},
+            { id: 5, Name: 'maria'},
+            { id: 6, Name: 'andrei'},
         ];
 
         this.studentCourses = [
-            { id: 1, id1: 1, id2: 1}, // studentul 1, cursul 1
-            { id: 2, id1: 1, id2: 2}, // studentul 1, cursul 2
-            { id: 3, id1: 1, id2: 3}, // studentul 1, cursul 3
-            { id: 4, id1: 1, id2: 4}, // studentul 1, cursul 4
-            { id: 5, id1: 2, id2: 5}, // studentul 2, cursul 5
-            { id: 6, id1: 2, id2: 6}, // studentul 2, cursul 6
-            { id: 7, id1: 3, id2: 1}, // studentul 3, cursul 1
-            { id: 8, id1: 3, id2: 5}, // studentul 3, cursul 5
-            { id: 9, id1: 3, id2: 6},  // studentul 3, cursul 6
-            { id: 9, id1: 3, id2: 3}  // studentul 3, cursul 3
+            { id: 1, id1: 4, id2: 1}, // studentul 1, cursul 1
+            { id: 2, id1: 4, id2: 2}, // studentul 1, cursul 2
+            { id: 3, id1: 4, id2: 3}, // studentul 1, cursul 3
+            { id: 4, id1: 5, id2: 4}, // studentul 1, cursul 4
+            { id: 5, id1: 5, id2: 5}, // studentul 2, cursul 5
+            { id: 6, id1: 5, id2: 6}, // studentul 2, cursul 6
+            { id: 7, id1: 6, id2: 1}, // studentul 3, cursul 1
+            { id: 8, id1: 6, id2: 5}, // studentul 3, cursul 5
+            { id: 9, id1: 6, id2: 6}, // studentul 3, cursul 6
+            { id: 10, id1: 6, id2: 3}  // studentul 3, cursul 3
         ];
 
         this.studentInfo = [
-            { id: 1, StudentId: 1, CourseId: 1, Grade: 8 },
-            { id: 2, StudentId: 1, CourseId: 2, Grade: 10 },
-            { id: 3, StudentId: 1, CourseId: 3, Grade: 7 },
-            { id: 4, StudentId: 2, CourseId: 6, Grade: 9 },
-            { id: 5, StudentId: 3, CourseId: 1, Grade: 6 },
-            { id: 6, StudentId: 2, CourseId: 3, Grade: 8 },
-            { id: 7, StudentId: 3, CourseId: 6, Grade: 10 },
-            { id: 8, StudentId: 2, CourseId: 5, Grade: 9 },
-            { id: 9, StudentId: 3, CourseId: 4, Grade: 8 },
-            { id: 9, StudentId: 3, CourseId: 3, Grade: 8 }
+            { id: 1, StudentId: 4, CourseId: 1, Grade: 8 },
+            { id: 2, StudentId: 4, CourseId: 2, Grade: 10 },
+            { id: 3, StudentId: 4, CourseId: 3, Grade: 7 },
+            { id: 4, StudentId: 5, CourseId: 6, Grade: 9 },
+            { id: 5, StudentId: 5, CourseId: 1, Grade: 6 },
+            { id: 6, StudentId: 5, CourseId: 3, Grade: 8 },
+            { id: 7, StudentId: 6, CourseId: 6, Grade: 10 },
+            { id: 8, StudentId: 6, CourseId: 5, Grade: 9 },
+            { id: 9, StudentId: 6, CourseId: 4, Grade: 8 },
+            { id: 9, StudentId: 6, CourseId: 3, Grade: 8 }
         ];
 
         return { users: this.users,

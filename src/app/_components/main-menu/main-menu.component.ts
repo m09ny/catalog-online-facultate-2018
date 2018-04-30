@@ -19,15 +19,17 @@ export class MainMenuComponent implements OnInit {
     this.user = JSON.parse(localStorage.getItem("currentUser"));
     if (this.user) {
       this.menu = this.menu.concat([
-        { Name: 'Home', Path: '/', Active: true },
-        { Name: 'Courses', Path: '/courses', Active: false }
+        { Name: 'Home', Path: '/', Active: true }
       ]);
       if (this.user.Role === UserRole.Teacher) {
         this.menu = this.menu.concat([{ Name: 'Students', Path: '/students', Active: false}]);
       }
 
       if (this.user.Role === UserRole.Student) {
-        this.menu = this.menu.concat([{ Name: 'Teachers', Path: '/teachers', Active: false }]);
+        this.menu = this.menu.concat([
+          { Name: 'Courses', Path: '/courses', Active: false },
+          { Name: 'Teachers', Path: '/teachers', Active: false }
+        ]);
       }
 
       this.menu = this.menu.concat([

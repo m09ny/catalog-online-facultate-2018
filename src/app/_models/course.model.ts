@@ -3,4 +3,6 @@ export class Course {
     Name: string;
     Teacher: number;
     TeacherName?: string = "";
+    Enroled?: boolean = false;
+    LinkId?: number = null;
 }

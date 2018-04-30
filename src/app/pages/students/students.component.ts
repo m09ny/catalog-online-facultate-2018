@@ -64,7 +64,7 @@ export class StudentsComponent implements OnInit {
           
           var students = response[1].filter((value) => studentCourses.indexOf(value.id) >= 0), 
             student = [],
-            current = 0;
+            current = response[3].length;
 
           for (var ndx1 in courses) {
             for (var ndx2 in students) {
@@ -77,12 +77,11 @@ export class StudentsComponent implements OnInit {
               var dbInfo = response[3].find((value) => value.CourseId === courses[ndx1].id 
                 && value.StudentId === students[ndx2].id);
               info.Grade = dbInfo ? dbInfo.Grade : null;
-              info.id = current++;
+              info.id = dbInfo ? dbInfo.id : current++;
               student.push(info);
             }
           }
           this.student = student;
-          console.log(this.student);
         } else {
           alert("No data");
         }

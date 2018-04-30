@@ -20,6 +20,15 @@ export class StudentCoursesService {
                         .catch(this.handleError);
     }
 
+    deleteStudentCourses(Link: Link): Promise<any>{
+        let deleteURL = `${this.StudentCoursesUrl}/${Link.id}`;
+       
+        return this.http.delete(deleteURL)
+                        .toPromise()
+                        .then(this.success)
+                        .catch(this.handleError);
+    }
+
     updateStudentCourses(Link: Link): Promise<any> {
         let updateURL = `${this.StudentCoursesUrl}/${Link.id}`;
 

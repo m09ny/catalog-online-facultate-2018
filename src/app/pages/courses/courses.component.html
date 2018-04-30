@@ -1,4 +1,11 @@
 <p-dataTable [value]="courses">
-  <p-column field="TeacherName" header="Teacher Name"></p-column>
-  <p-column field="Name" header="Course"></p-column>
+  <p-column field="TeacherName" header="Teacher Name" [filter]="true"></p-column>
+  <p-column field="Name" header="Course" [filter]="true"></p-column>
+  <p-column field="Enroled" header="Enroled" [editable]="true">
+    <ng-template let-row="rowData" let-index="rowIndex" let-col pTemplate="body">
+      <input type="checkbox" [(ngModel)]="row[col.field]"/>
+    </ng-template>
+  </p-column>
 </p-dataTable>
+
+<button class="btn btn-primary mt-3" type="button" (click)="saveCourses()" label="Primary">Save</button>

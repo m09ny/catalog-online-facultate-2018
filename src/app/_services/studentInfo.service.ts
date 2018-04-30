@@ -41,8 +41,7 @@ export class StudentInfoService {
                         .toPromise()
                         .then(response => response as StudentInfo)
                         .catch(this.handleError);
-    }                   
-
+    }
 
     updateStudentInfo(StudentInfo: StudentInfo): Promise<any>{
         let updateURL = `${this.StudentsInfoUrl}/${StudentInfo.id}`;
