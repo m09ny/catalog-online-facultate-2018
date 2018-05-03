@@ -18,12 +18,12 @@ export class ColledgeData implements InMemoryDbService {
 
     createDb() {
         this.courses = [
-            { id: 1, Name: 'Math', Teacher: 1 },
-            { id: 2, Name: 'Info', Teacher: 1 },
-            { id: 3, Name: 'Chimie', Teacher: 2 },
-            { id: 4, Name: 'Fizica', Teacher: 2 },
+            { id: 1, Name: 'Mathematics', Teacher: 1 },
+            { id: 2, Name: 'Informatics', Teacher: 1 },
+            { id: 3, Name: 'Chemistry', Teacher: 2 },
+            { id: 4, Name: 'Physics', Teacher: 2 },
             { id: 5, Name: 'Sport', Teacher: 3 },
-            { id: 6, Name: 'Romana', Teacher: 3 },
+            { id: 6, Name: 'Romanian Language', Teacher: 3 },
         ];
 
         this.users = [
@@ -31,20 +31,20 @@ export class ColledgeData implements InMemoryDbService {
             { id: 2, UserName: 'linda', Password: '1', Role: 1 },
             { id: 3, UserName: 'adrian', Password: '1', Role: 1 },
             { id: 4, UserName: 'alex', Password: '1', Role: 2 },
-            { id: 5, UserName: 'maria', Password: '1', Role: 2 },
+            { id: 5, UserName: 'andreea', Password: '1', Role: 2 },
             { id: 6, UserName: 'andrei', Password: '1', Role: 2 },
         ];
 
         this.teachers = [
-            { id: 1, Name: 'monica'},
-            { id: 2, Name: 'linda'},
-            { id: 3, Name: 'adrian'},
+            { id: 1, Name: 'Valcu Monica'},
+            { id: 2, Name: 'Szasz Linda'},
+            { id: 3, Name: 'Pop Adrian'},
         ];
 
         this.students = [
-            { id: 4, Name: 'alex'},
-            { id: 5, Name: 'maria'},
-            { id: 6, Name: 'andrei'},
+            { id: 4, Name: 'Matei Alexandru'},
+            { id: 5, Name: 'Popescu Andreea'},
+            { id: 6, Name: 'Mahalean Andrei'},
         ];
 
         this.studentCourses = [
